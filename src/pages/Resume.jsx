@@ -2,33 +2,47 @@ import { motion } from 'framer-motion'
 
 const experience = [
   {
-    company: 'Casino Surveillance Project',
-    role: 'Software Engineer (Independent)',
-    period: '2023 – Present',
-    location: 'Netherlands',
+    company: '1nd AI',
+    role: 'Software Developer',
+    period: 'Dec 2025 – Present',
+    location: 'Calgary, AB · Remote',
     bullets: [
-      'Architected and built a real-time card-counting detection engine processing live multi-stream video with 99%+ accuracy.',
-      'Developed a React monitoring dashboard with WebSocket feeds, live risk scoring, and operator alert system.',
-      'Applied probabilistic modelling to distinguish legitimate pattern variation from anomalous betting behaviour.',
+      'Designed and implemented an automated order-validation system for a retail business to improve fulfillment accuracy and reporting reliability.',
+      'Built logic to flag incomplete, inconsistent, or mismatched customer orders using structured data processing pipelines.',
+      'Developed scheduled validation workflows to run autonomously without manual intervention.',
+      'Generated structured PDF discrepancy reports using Python (ReportLab/PyPDF) for operational visibility and audit tracking.',
+      'Collaborated directly with stakeholders to translate business requirements into maintainable, scalable automation solutions.',
     ],
   },
   {
-    company: 'Freelance Development',
-    role: 'Frontend Developer',
-    period: '2022 – Present',
-    location: 'Remote',
+    company: 'Grey Eagle Casino',
+    role: 'Surveillance Operator',
+    period: 'Apr 2024 – Present',
+    location: 'Calgary, AB',
     bullets: [
-      'Delivered full-stack web applications for clients across fintech, e-commerce, and data visualization.',
-      'Built automation tooling in Python that cut manual testing overhead by 70% on detection projects.',
-      'Designed and shipped high-performance React SPAs with sub-100ms navigation using Vite and lazy loading.',
+      'Monitored casino operations within a highly regulated environment, applying structured risk assessment and compliance protocols.',
+      'Investigated operational irregularities and prepared detailed incident documentation supporting audit and regulatory processes.',
+      'Maintained data integrity and procedural transparency across surveillance workflows.',
+      'Worked cross-functionally with compliance and security teams to uphold operational standards.',
+    ],
+  },
+  {
+    company: 'Broil King',
+    role: 'Operations & Sales Intern',
+    period: 'May 2024 – Present',
+    location: 'Calgary, AB',
+    bullets: [
+      'Managed logistics and part deliveries across 17+ warehouse and retail locations, optimizing coordination workflows.',
+      'Maintained structured operational oversight across regional stores, reinforcing process consistency and accountability.',
+      'Developed client-facing communication and stakeholder coordination skills in fast-paced environments.',
     ],
   },
 ]
 
 const education = [
   {
-    school: 'Your Institution',
-    degree: 'Your Degree / Certification',
+    school: 'Wilfrid Laurier University',
+    degree: 'Computer Science, BS',
     period: '20XX – 20XX',
     note: 'Update this with your actual education',
   },
@@ -50,7 +64,7 @@ export default function Resume() {
           <div>
             <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#C9A84C', letterSpacing: '0.15em', marginBottom: '14px' }}>CURRICULUM VITAE</p>
             <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px, 5vw, 60px)', marginBottom: '6px' }}>Raul Boonstra-Ariza</h1>
-            <p style={{ color: 'rgba(244,241,235,0.5)', fontSize: '17px' }}>Software Engineer · Fintech Focus</p>
+            <p style={{ color: 'rgba(244,241,235,0.5)', fontSize: '17px' }}>Software Developer</p>
           </div>
           <a href="/resume.pdf" download style={{
             background: '#C9A84C', color: '#0B1121',

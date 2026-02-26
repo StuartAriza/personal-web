@@ -11,30 +11,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
 }
 
-function Counter({ to, suffix = '' }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef(null)
-  const started = useRef(false)
 
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !started.current) {
-        started.current = true
-        let start = 0
-        const step = Math.ceil(to / 40)
-        const id = setInterval(() => {
-          start = Math.min(start + step, to)
-          setCount(start)
-          if (start >= to) clearInterval(id)
-        }, 30)
-      }
-    }, { threshold: 0.5 })
-    if (ref.current) obs.observe(ref.current)
-    return () => obs.disconnect()
-  }, [to])
-
-  return <span ref={ref}>{count}{suffix}</span>
-}
 
 const recentProjects = [
   {
@@ -82,7 +59,7 @@ export default function Home() {
             <motion.div variants={fadeUp} style={{ marginBottom: '28px' }}>
               <span className="available-badge">
                 <span className="dot" />
-                OPEN TO FINTECH ROLES · JUNIOR SWE
+                OPEN TO SOFTWARE ROLES · JUNIOR SWE
               </span>
             </motion.div>
 
@@ -93,8 +70,8 @@ export default function Home() {
               marginBottom: '24px',
               maxWidth: '720px',
             }}>
-              Building precise,<br />
-              <span style={{ color: '#C9A84C', fontStyle: 'italic' }}>data-driven</span> software.
+              Raul<br />
+              <span style={{ color: '#C9A84C'}}>Boonstra-Ariza</span> 
             </motion.h1>
 
             <motion.p variants={fadeUp} style={{
@@ -104,9 +81,9 @@ export default function Home() {
               lineHeight: 1.75,
               marginBottom: '44px',
             }}>
-              I'm <strong style={{ color: '#F4F1EB', fontWeight: 500 }}>Raul Boonstra-Ariza</strong> — a software engineer
-              specializing in detection systems, automation, and financial-grade web applications.
-              Currently seeking a junior fintech engineering role.
+          A Software engineer focused on building reliable, data-driven systems.
+          Experience in detection, automation, and production-ready web applications
+ 
             </motion.p>
 
             <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -137,127 +114,292 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      {/* ── Stats strip ───────────────────────────────────── */}
+      {/* ── Tech stack strip ──────────────────────────────── */}
       <section style={{ borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 40px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 40px' }}>
           {[
-            { val: 3, suffix: '+', label: 'Detection systems built' },
-            { val: 99, suffix: '%', label: 'Detection accuracy' },
-            { val: 5, suffix: '+', label: 'Production projects' },
-            { val: 2, suffix: '', label: 'Languages (React · Python)' },
-          ].map((s, i) => (
-            <div key={i} className="reveal" style={{
-              padding: '36px 0',
-              borderRight: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
-              paddingLeft: i > 0 ? '32px' : '0',
+            {
+              label: 'Core Technologies',
+              items: ['JavaScript', 'TypeScript', 'Python', ],
+            },
+            {
+              label: 'Frontend',
+              items: ['React', 'Next.js', 'Tailwind CSS'],
+            },
+            {
+              label: 'Backend & Data',
+              items: ['Node.js', 'Express', 'PostgreSQL', 'REST APIs', 'WebSockets'],
+            },
+            {
+              label: 'Tools',
+              items: ['Git', 'Docker', 'CI/CD'],
+            },
+          ].map((group, i) => (
+            <div key={group.label} className="reveal" style={{
+              display: 'flex', alignItems: 'baseline', gap: '32px',
+              padding: '24px 0',
+              borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none',
               transitionDelay: `${i * 0.08}s`,
             }}>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', color: '#C9A84C', marginBottom: '4px' }}>
-                <Counter to={s.val} suffix={s.suffix} />
+              <p style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: '10px', color: '#C9A84C',
+                letterSpacing: '0.12em', flexShrink: 0,
+                width: '180px',
+              }}>
+                {group.label.toUpperCase()}
               </p>
-              <p style={{ fontSize: '12px', color: 'rgba(244,241,235,0.45)', letterSpacing: '0.03em' }}>{s.label}</p>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                {group.items.map(item => (
+                  <span key={item} className="tag">{item}</span>
+                ))}
+              </div>
             </div>
           ))}
+          
+          
         </div>
       </section>
 
-      {/* ── Selected work ─────────────────────────────────── */}
-      <section style={{ maxWidth: '1000px', margin: '0 auto', padding: '88px 40px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '48px' }}>
-          <div>
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#C9A84C', letterSpacing: '0.15em', marginBottom: '10px' }}>SELECTED WORK</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 4vw, 40px)' }}>Projects that matter.</h2>
-          </div>
-          <Link to="/projects" className="nav-link" style={{ fontSize: '13px', color: 'rgba(244,241,235,0.45)', textDecoration: 'none' }}>All projects →</Link>
-        </div>
+{/* ── Featured Projects ─────────────────────────────────── */}
+<section style={{ maxWidth: '1000px', margin: '0 auto', padding: '88px 40px' }}>
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'baseline',
+      marginBottom: '56px',
+      flexWrap: 'wrap',
+      gap: '12px',
+    }}
+  >
+    <div>
+      <p
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: '11px',
+          color: '#C9A84C',
+          letterSpacing: '0.15em',
+          marginBottom: '12px',
+        }}
+      >
+        FEATURED PROJECTS
+      </p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-          {recentProjects.map((p, i) => (
-            <motion.div
-              key={p.title}
-              className="project-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              style={{ padding: '28px 32px', display: 'flex', gap: '24px', alignItems: 'flex-start' }}
-            >
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#C9A84C', flexShrink: 0, marginTop: '4px' }}>{p.num}</span>
-              <div style={{ flex: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px', flexWrap: 'wrap', gap: '8px' }}>
-                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px' }}>{p.title}</h3>
-                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '10px', color: '#C9A84C', border: '1px solid rgba(201,168,76,0.3)', padding: '2px 8px', background: 'rgba(201,168,76,0.08)' }}>
-                      {p.relevance}
-                    </span>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: 'rgba(244,241,235,0.3)' }}>{p.year}</span>
-                  </div>
-                </div>
-                <p style={{ fontSize: '13px', color: 'rgba(244,241,235,0.55)', lineHeight: 1.7, marginBottom: '14px' }}>{p.desc}</p>
-                <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-                  {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                </div>
-              </div>
-              <span style={{ color: 'rgba(201,168,76,0.3)', fontSize: '18px', flexShrink: 0 }}>↗</span>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+      <h2
+        style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: 'clamp(28px, 4vw, 40px)',
+        }}
+      >
+        Selected work.
+      </h2>
+    </div>
 
-      {/* ── About strip ───────────────────────────────────── */}
-      <section style={{ borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '88px 40px', display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '64px', alignItems: 'start' }}>
-          <div className="reveal">
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#C9A84C', letterSpacing: '0.15em', marginBottom: '16px' }}>ABOUT</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 4vw, 38px)', lineHeight: 1.2 }}>
-              Precision is<br /><em>the product.</em>
-            </h2>
-          </div>
-          <div className="reveal">
-            <p style={{ fontSize: '16px', color: 'rgba(244,241,235,0.65)', lineHeight: 1.85, marginBottom: '20px' }}>
-              I build software that has to be <em>right</em> — not approximately right. My background in casino surveillance and card-detection systems taught me that precision, performance, and edge-case handling aren't optional extras.
-            </p>
-            <p style={{ fontSize: '16px', color: 'rgba(244,241,235,0.65)', lineHeight: 1.85, marginBottom: '28px' }}>
-              I'm now applying that same mindset to fintech: systems where data integrity, real-time processing, and clean interfaces actually matter. I work primarily in React and Python, comfortable going deep into both the UI layer and the logic underneath it.
-            </p>
-            <Link to="/resume" className="nav-link" style={{ fontSize: '13px', color: '#C9A84C', textDecoration: 'none' }}>
-              See full resume →
-            </Link>
-          </div>
-        </div>
-      </section>
+    <Link
+      to="/projects"
+      className="nav-link"
+      style={{
+        fontSize: '13px',
+        color: 'rgba(244,241,235,0.45)',
+        textDecoration: 'none',
+      }}
+    >
+      All projects →
+    </Link>
+  </div>
 
-      {/* ── Photography CTA ───────────────────────────────── */}
-      <section style={{ maxWidth: '1000px', margin: '0 auto', padding: '88px 40px' }} className="reveal">
-        <div style={{
-          border: '1px solid rgba(255,255,255,0.07)',
-          padding: '56px 64px',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          flexWrap: 'wrap', gap: '32px',
-          background: 'rgba(255,255,255,0.01)',
-        }}>
-          <div>
-            <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: 'rgba(244,241,235,0.3)', letterSpacing: '0.15em', marginBottom: '12px' }}>SECONDARY SERVICE</p>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '30px', fontStyle: 'italic', marginBottom: '8px' }}>Freelance Photography</h2>
-            <p style={{ color: 'rgba(244,241,235,0.45)', fontSize: '14px', maxWidth: '360px', lineHeight: 1.65 }}>
-              A small number of commissions each year — architecture, corporate events, and product work.
-              Same obsession with detail, different medium.
-            </p>
-          </div>
-          <Link to="/photography" style={{
-            border: '1px solid rgba(244,241,235,0.2)', color: '#F4F1EB',
-            padding: '12px 24px', textDecoration: 'none', fontSize: '13px',
-            fontWeight: 500, letterSpacing: '0.04em', flexShrink: 0,
-            transition: 'border-color 0.2s, color 0.2s',
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+    {recentProjects.map((p, i) => (
+      <Link
+        key={p.title}
+        to="/projects"
+        style={{ textDecoration: 'none' }}
+      >
+        <motion.div
+          className="project-card"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, delay: i * 0.08 }}
+          style={{
+            padding: '32px 36px',
+            display: 'flex',
+            gap: '28px',
+            alignItems: 'flex-start',
+            borderBottom: '1px solid rgba(255,255,255,0.04)',
+            transition: 'background 0.3s ease',
           }}
-            onMouseEnter={e => { e.target.style.borderColor = '#C9A84C'; e.target.style.color = '#C9A84C' }}
-            onMouseLeave={e => { e.target.style.borderColor = 'rgba(244,241,235,0.2)'; e.target.style.color = '#F4F1EB' }}
+        >
+          <span
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: '11px',
+              color: '#C9A84C',
+              flexShrink: 0,
+              marginTop: '4px',
+            }}
           >
-            View Work →
-          </Link>
-        </div>
-      </section>
+            {p.num}
+          </span>
+
+          <div style={{ flex: 1 }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                marginBottom: '10px',
+                flexWrap: 'wrap',
+                gap: '10px',
+              }}
+            >
+              <h3
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: '20px',
+                }}
+              >
+                {p.title}
+              </h3>
+
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                <span
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: '10px',
+                    color: '#C9A84C',
+                    border: '1px solid rgba(201,168,76,0.3)',
+                    padding: '3px 10px',
+                    background: 'rgba(201,168,76,0.08)',
+                    letterSpacing: '0.08em',
+                  }}
+                >
+                  {p.category}
+                </span>
+
+                <span
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: '11px',
+                    color: 'rgba(244,241,235,0.3)',
+                  }}
+                >
+                  {p.year}
+                </span>
+              </div>
+            </div>
+
+            <p
+              style={{
+                fontSize: '14px',
+                color: 'rgba(244,241,235,0.55)',
+                lineHeight: 1.7,
+                marginBottom: '16px',
+                maxWidth: '650px',
+              }}
+            >
+              {p.desc}
+            </p>
+
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              {p.tags.map((t) => (
+                <span key={t} className="tag">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <span
+            style={{
+              color: 'rgba(201,168,76,0.3)',
+              fontSize: '18px',
+              flexShrink: 0,
+              transition: 'transform 0.3s ease',
+            }}
+          >
+            ↗
+          </span>
+        </motion.div>
+      </Link>
+    ))}
+  </div>
+</section>
+
+{/* ── About strip ───────────────────────────────────── */}
+<section style={{ borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+  <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '88px 40px', display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '64px', alignItems: 'start' }}>
+    <div className="reveal">
+      <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#C9A84C', letterSpacing: '0.15em', marginBottom: '16px' }}>ABOUT</p>
+      <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 4vw, 38px)', lineHeight: 1.2 }}>
+        Reliability<br /><em>by design.</em>
+      </h2>
+    </div>
+
+    <div className="reveal">
+      <p style={{ fontSize: '16px', color: 'rgba(244,241,235,0.65)', lineHeight: 1.85, marginBottom: '20px' }}>
+        I build software for environments where speed and correctness matter. My background in casino surveillance exposed me to real-time workflows,
+        edge cases, and operational decision-making — the kind of constraints that quickly reveal whether a system is actually dependable.
+      </p>
+
+      <p style={{ fontSize: '16px', color: 'rgba(244,241,235,0.65)', lineHeight: 1.85, marginBottom: '28px' }}>
+        I’m most comfortable working across the stack: designing clean interfaces in React, building backend logic in Python, and connecting everything with
+        well-structured data and predictable behavior. I’m currently looking for a junior software engineering role where I can ship useful features and keep improving fast.
+      </p>
+
+      <Link to="/resume" className="nav-link" style={{ fontSize: '13px', color: '#C9A84C', textDecoration: 'none' }}>
+        See full resume →
+      </Link>
+    </div>
+  </div>
+</section>
+
+{/* ── Photography (subtle) ─────────────────────────────── */}
+<section style={{ maxWidth: '1000px', margin: '0 auto', padding: '64px 40px' }} className="reveal">
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'baseline',
+      gap: '24px',
+      flexWrap: 'wrap',
+      paddingTop: '18px',
+      borderTop: '1px solid rgba(255,255,255,0.06)',
+    }}
+  >
+    <div>
+      <p
+        style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: '11px',
+          color: 'rgba(244,241,235,0.35)',
+          letterSpacing: '0.15em',
+          marginBottom: '10px',
+        }}
+      >
+        ALSO
+      </p>
+
+      <p style={{ color: 'rgba(244,241,235,0.55)', fontSize: '14px', lineHeight: 1.7, maxWidth: '620px' }}>
+        Photography gallery — architecture, events, and product detail.
+      </p>
+    </div>
+
+    <Link
+      to="/photography"
+      className="nav-link"
+      style={{
+        fontSize: '13px',
+        color: 'rgba(244,241,235,0.45)',
+        textDecoration: 'none',
+        flexShrink: 0,
+      }}
+    >
+      View gallery →
+    </Link>
+  </div>
+</section>
     </div>
   )
 }
