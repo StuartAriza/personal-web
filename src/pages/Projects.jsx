@@ -64,7 +64,7 @@ const projects = [
     result: 'Responsive, accessible layout with smooth motion and clear content structure',
     type: 'web',
     github: 'https://github.com',
-    live: 'https://raulboonstra-ariza.netlify.app/projects',
+    live: 'https://raulboonstra-ariza.netlify.app',
   },
 ]
 
