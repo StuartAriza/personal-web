@@ -28,7 +28,7 @@ const projects = [
     live: null,
   },
   {
-  id: 6,
+  id: 3,
   title: 'Stock Monitor — Real-Time Alerts',
   category: 'Full-Stack System',
   focus: 'Real-time',
@@ -36,7 +36,7 @@ const projects = [
   tags: ['Node.js', 'Express', 'Prisma', 'PostgreSQL', 'WebSockets', 'React', 'TypeScript', 'Docker'],
   desc: 'Full-stack stock monitoring platform that polls prices, stores history, evaluates rule-based alerts, and streams live updates via WebSockets. Built for production-style workflow with Docker Compose, Prisma migrations, and Discord webhook alerting (optional).',
   result: 'Live price feed + stored history + rule engine + real-time UI updates',
-  type: 'web',
+  type: 'tool',
   github: 'https://github.com/StuartAriza/Stock-Monitor',
   live: null,
   },
