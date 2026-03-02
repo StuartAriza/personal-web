@@ -15,25 +15,22 @@ export default function Contact() {
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
 
-  // Netlify form submit helper
-  const encode = (data) =>
-    Object.keys(data)
-      .map((k) => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
-      .join('&')
-
   const onSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
 
     try {
-      
-      await fetch('/', {
+      const res = await fetch('https://formspree.io/f/xbdavrrd', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', ...form }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       })
-      setStatus('sent')
-      setForm({ name: '', email: '', type: types[0], message: '' })
+      if (res.ok) {
+        setStatus('sent')
+        setForm({ name: '', email: '', type: types[0], message: '' })
+      } else {
+        setStatus('error')
+      }
     } catch {
       setStatus('error')
     }
