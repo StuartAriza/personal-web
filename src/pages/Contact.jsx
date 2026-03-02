@@ -26,7 +26,7 @@ export default function Contact() {
     setStatus('sending')
 
     try {
-      // IMPORTANT: this actually submits to Netlify Forms
+      
       await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -208,7 +208,7 @@ export default function Contact() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {[
                 { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raulariza/' },
-                { label: 'GitHub', href: 'https://github.com' }, // replace with your actual GitHub
+                { label: 'GitHub', href: 'https://github.com/stuartariza' },
               ].map((s) => (
                 <a
                   key={s.label}
