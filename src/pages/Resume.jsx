@@ -7,34 +7,35 @@ const experience = [
     period: 'Dec 2025 – Present',
     location: 'Calgary, AB · Remote',
     bullets: [
-      'Designed and implemented an automated order-validation system for a retail business to improve fulfillment accuracy and reporting reliability.',
-      'Built logic to flag incomplete, inconsistent, or mismatched customer orders using structured data processing pipelines.',
-      'Developed scheduled validation workflows to run autonomously without manual intervention.',
-      'Generated structured PDF discrepancy reports using Python (ReportLab/PyPDF) for operational visibility and audit tracking.',
-      'Collaborated directly with stakeholders to translate business requirements into maintainable, scalable automation solutions.',
+      'Engineered an automated order-validation system improving fulfillment accuracy and reducing manual review overhead.',
+      'Designed structured data pipelines to detect incomplete, inconsistent, or high-risk transactions.',
+      'Implemented scheduled background workflows to ensure autonomous validation and reporting.',
+      'Built PDF discrepancy reporting tools using Python (ReportLab, PyPDF) for audit and operational visibility.',
+      'Worked directly with stakeholders to translate business requirements into maintainable backend systems.',
     ],
   },
   {
     company: 'Grey Eagle Casino',
-    role: 'Surveillance Operator',
+    role: 'Surveillance Analyst',
     period: 'Apr 2024 – Present',
     location: 'Calgary, AB',
     bullets: [
-      'Monitored casino operations within a highly regulated environment, applying structured risk assessment and compliance protocols.',
-      'Investigated operational irregularities and prepared detailed incident documentation supporting audit and regulatory processes.',
-      'Maintained data integrity and procedural transparency across surveillance workflows.',
-      'Worked cross-functionally with compliance and security teams to uphold operational standards.',
+      'Monitored live operations in a highly regulated gaming environment with zero tolerance for error.',
+      'Identified irregular activity patterns and produced structured documentation for investigations.',
+      'Applied compliance and risk protocols requiring sustained attention to detail and discretion.',
+      'Maintained audit-ready reporting aligned with regulatory standards.',
     ],
   },
   {
     company: 'Broil King',
     role: 'Operations & Sales Intern',
-    period: 'May 2024 – Present',
+    period: 'Apr 2022 – Sep 2022',
     location: 'Calgary, AB',
     bullets: [
-      'Managed logistics and part deliveries across 17+ warehouse and retail locations, optimizing coordination workflows.',
-      'Maintained structured operational oversight across regional stores, reinforcing process consistency and accountability.',
-      'Developed client-facing communication and stakeholder coordination skills in fast-paced environments.',
+      'Coordinated logistics operations across 17+ warehouse and retail distribution locations.',
+      'Built a route-optimization script to determine the fastest path across all warehouse stops.',
+      'Tracked inventory movement and maintained structured reporting workflows.',
+      'Improved cross-functional communication between sales, operations, and distribution teams.',
     ],
   },
 ]
@@ -42,17 +43,17 @@ const experience = [
 const education = [
   {
     school: 'Wilfrid Laurier University',
-    degree: 'Computer Science, BS',
-    period: '20XX – 20XX',
-    note: 'Update this with your actual education',
+    degree: 'Bachelor of Science in Computer Science',
+    period: '2019 – 2023',
+    note: 'VP of Events – Laurier Fintech Association · VP of Operations – Laurier Latin Society',
   },
 ]
 
 const skills = {
-  'Frontend': ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'D3.js'],
-  'Backend & Data': ['Python', 'Node.js', 'PostgreSQL', 'REST APIs', 'WebSockets'],
-  'Fintech Relevant': ['Real-time Data', 'Anomaly Detection', 'Risk Dashboards', 'Audit Logging'],
-  'Tools': ['Git', 'Docker', 'Vite', 'Pytest', 'CI/CD', 'Figma'],
+  'Frontend': ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+  'Backend & Data': ['Python', 'Node.js', 'Express', 'Django', 'Flask', 'REST APIs'],
+  'Databases': ['PostgreSQL', 'Microsoft SQL Server', 'Oracle SQL'],
+  'Tools': ['Git', 'Docker', 'AWS', 'Azure ML', 'Firebase', 'CI/CD'],
 }
 
 export default function Resume() {
@@ -66,7 +67,7 @@ export default function Resume() {
             <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px, 5vw, 60px)', marginBottom: '6px' }}>Raul Boonstra-Ariza</h1>
             <p style={{ color: 'rgba(244,241,235,0.5)', fontSize: '17px' }}>Software Developer</p>
           </div>
-          <a href="/resume.pdf" download style={{
+          <a href="/Raul_Boonstra-Ariza_Resume.pdf" download style={{
             background: '#C9A84C', color: '#0B1121',
             padding: '13px 24px', fontSize: '13px', fontWeight: 600,
             letterSpacing: '0.04em', textDecoration: 'none', flexShrink: 0,
@@ -85,10 +86,10 @@ export default function Resume() {
         <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: '#C9A84C', letterSpacing: '0.15em', marginBottom: '36px' }}>EXPERIENCE</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
           {experience.map((job, i) => (
-            <div key={i} className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '32px' }} style2={{ transitionDelay: `${i * 0.1}s` }}>
+            <div key={i} className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '32px' }}>
               <div>
                 <p style={{ fontWeight: 500, marginBottom: '4px', color: '#F4F1EB' }}>{job.company}</p>
-                <p style={{ fontSize: '12px', color: '#C9A84C', fontFamily: "'JetBrains Mono', monospace', marginBottom: '4px'" }}>{job.period}</p>
+                <p style={{ fontSize: '12px', color: '#C9A84C', fontFamily: "'JetBrains Mono', monospace", marginBottom: '4px' }}>{job.period}</p>
                 <p style={{ fontSize: '12px', color: 'rgba(244,241,235,0.35)' }}>{job.location}</p>
               </div>
               <div>
@@ -142,10 +143,6 @@ export default function Resume() {
           ))}
         </div>
       </section>
-
-      <div style={{ marginTop: '56px', padding: '14px 18px', border: '1px dashed rgba(255,255,255,0.1)', fontFamily: "'JetBrains Mono', monospace", fontSize: '11px', color: 'rgba(244,241,235,0.25)' }}>
-        // Place your CV at <code style={{ color: 'rgba(201,168,76,0.5)' }}>public/resume.pdf</code> for the download button · Edit experience in <code style={{ color: 'rgba(201,168,76,0.5)' }}>src/pages/Resume.jsx</code>
-      </div>
     </div>
   )
 }
