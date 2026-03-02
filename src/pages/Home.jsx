@@ -355,7 +355,7 @@ export default function Home() {
   </div>
 </section>
 
-{/* ── Photography (subtle) ─────────────────────────────── */}
+{/* ── Photography ─────────────────────────────── */}
 <section style={{ maxWidth: '1000px', margin: '0 auto', padding: '64px 40px' }} className="reveal">
   <div
     style={{
@@ -382,7 +382,7 @@ export default function Home() {
       </p>
 
       <p style={{ color: 'rgba(244,241,235,0.55)', fontSize: '14px', lineHeight: 1.7, maxWidth: '620px' }}>
-        Photography gallery — architecture, events, and product detail.
+        Photography gallery — Things I thought looked cool
       </p>
     </div>
 
